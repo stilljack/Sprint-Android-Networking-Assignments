@@ -22,10 +22,13 @@ class MainActivity : AppCompatActivity(), Callback<List<wtf>> {
 
     override fun onResponse(call: Call<List<wtf>>, response: Response<List<wtf>>) {
         if (response.isSuccessful) {
-            val oceaniaCountryList = response.body()
-
+            val oceaniaCountryList:List<wtf>? = response.body()
+            var oceanMan = ""
+            for (i in 0 until  oceaniaCountryList?.size as Int) {
+                oceanMan += oceaniaCountryList[i].name
+            }
             Log.i("the plane from lost?","$oceaniaCountryList")
-            tv_ctv.text = oceaniaCountryList.toString()
+            tv_ctv.text = oceanMan
         } else {
             val response = "response not successful; ${response.errorBody().toString()}"
             Toast.makeText(this@MainActivity, response, Toast.LENGTH_SHORT).show()

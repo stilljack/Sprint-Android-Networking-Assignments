@@ -6,7 +6,7 @@ import retrofit2.http.GET
 
 interface CountriesAPI {
 
-    @GET("<the last portion of your API URL>")
+    @GET("/rest/v2/region/Oceania")
     fun getCountries(): Call<OceaniaCountryList>
 
 }

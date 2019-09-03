@@ -11,6 +11,13 @@
     android:text="press for effects"
     android:id="@+id/btn"
     />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=".stop"
+        app:layout_constraintTop_toBottomOf="@id/btn"
+        android:id="@+id/btn2"
+        />
     <TextView
         android:id="@+id/tv"
         android:layout_width="wrap_content"

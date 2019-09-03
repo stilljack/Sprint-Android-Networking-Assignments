@@ -6,11 +6,6 @@ import com.google.gson.annotations.SerializedName
 data class OceaniaCountryList (
     val countryList: List<OceaniaCountry>// define "OceaniaCountry" class soon...
 )
-{
-    override fun toString(): String {
-        return "whelp ${countryList[0].name}"
-    }
-}
 
 
 data class OceaniaCountry (
@@ -41,7 +36,7 @@ data class OceaniaCountry (
     val cioc : String
 )
 
-data class Translations (
+/*data class Translations (
 
     val de : String,
     val es : String,
@@ -53,7 +48,7 @@ data class Translations (
     val nl : String,
     val hr : String,
     val fa : String
-)
+)*/
 data class Currencies (
 
     val code : String,

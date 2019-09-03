@@ -1,21 +1,19 @@
 package com.saucefan.stuff.m01_threading
 
-import android.app.PendingIntent
-import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
-import java.util.logging.Logger.global
 
-class MainActivity : AppCompatActivity() {
-
-
-    fun visSwap(view:View){
+class MainActivity() : AppCompatActivity() {
+lateinit var new:AsyncTask<Unit, Int, String>
+     fun visSwap(view:View){
         if (view.visibility == View.INVISIBLE){
             view.visibility = View.VISIBLE
         }
@@ -27,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             generateSequence { i++ }
                 .filter { n -> n > 1 && ((2 until n).none { i -> n % i == 0L }) }
                 .forEach { yield(it) }
+
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,8 +37,9 @@ class MainActivity : AppCompatActivity() {
 
         class MyAsyncTask : AsyncTask<Unit, Int, String>() {
             override fun doInBackground(vararg p0: Unit?): String {
-                val primeNumbers = primes().take(1600).joinToString(", ")
+                val primeNumbers = primes().take(16000).joinToString(", ")
                 return primeNumbers
+
             }
 
             override fun onPostExecute(result: String?) {
@@ -47,6 +47,9 @@ class MainActivity : AppCompatActivity() {
                 visSwap(progressBar)
                 visSwap(tv)
                 tv.text = result
+                if (isCancelled()){
+                    Log.i("stopped","onpostexecute")
+                }
             }
 
             override fun onPreExecute() {
@@ -57,34 +60,24 @@ class MainActivity : AppCompatActivity() {
 
             override fun onCancelled() {
                 super.onCancelled()
+                Log.i("stoped","oncanceled")
             }
 
         }
 
-           //progressBar.visibility = View.VISIBLE
-                //so that works but...
-           // visSwap()
-                //just calling the method that worked before doesn't... weird...
 
-       //
-       // tv.text = "Primes: $primeNumbers"
-       // tv.visibility=View.VISIBLE
-       // visSwap()
-
-
-        //just cause i didn't believe this code would work
-       // tv.setOnClickListener{
-      //      visSwap()
-      //  }
         val new = MyAsyncTask()
 
         btn.setOnClickListener {
             new.execute()
+
         }
 
     }
 
     override fun onStop() {
+
+        new.cancel(true)
         super.onStop()
     }
 

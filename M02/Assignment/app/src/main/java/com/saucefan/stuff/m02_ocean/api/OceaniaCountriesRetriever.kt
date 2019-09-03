@@ -9,7 +9,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class OceaniaCountriesRetriever {
     companion object {
         private const val TAG = "RETRIEVER"
-        internal const val BASE_URL = "https://restcountries.eu/"
+        internal const val BASE_URL = "https://restcountries.eu/rest/v2"
     }
 
     fun getOceaniaCountries(): Call<OceaniaCountryList> {

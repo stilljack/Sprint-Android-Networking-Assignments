@@ -1,7 +1,8 @@
 package com.saucefan.stuff.m02_ocean.api
 
-import android.telecom.Call
+import retrofit2.Call
 import com.google.gson.GsonBuilder
+import com.saucefan.stuff.m02_ocean.model.OceaniaCountryList
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

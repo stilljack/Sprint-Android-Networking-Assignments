@@ -1,8 +1,9 @@
 package com.saucefan.stuff.m02_ocean.model
 
-data class OceaniaCountryList {
-    val country: List<OceaniaCountry> // define "OceaniaCountry" class soon...
-}
+
+data class OceaniaCountryList (
+    val country: List<OceaniaCountry>// define "OceaniaCountry" class soon...
+)
 
 data class OceaniaCountry (
     val alpha2code: String,

@@ -7,6 +7,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class OceaniaCountriesRetriever {
+    companion object {
+        private const val TAG = "RETRIEVER"
+        internal const val BASE_URL = "https://restcountries.eu/rest/v2/region/Oceania"
+    }
 
     fun getOceaniaCountries(): Call<OceaniaCountryList> {
         val gson = GsonBuilder()

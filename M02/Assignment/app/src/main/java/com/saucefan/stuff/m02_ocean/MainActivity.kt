@@ -13,18 +13,19 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), Callback<wtf> {
-    override fun onFailure(call: Call<wtf>, t: Throwable) {
+class MainActivity : AppCompatActivity(), Callback<List<wtf>> {
+    override fun onFailure(call: Call<List<wtf>>, t: Throwable) {
         t.printStackTrace()
-        val response = "faliure; ${t.printStackTrace()}"
+        val response = "faliure; ${t.message}"
         Toast.makeText(this@MainActivity, response, Toast.LENGTH_SHORT).show()
     }
 
-    override fun onResponse(call: Call<wtf>, response: Response<wtf>) {
+    override fun onResponse(call: Call<List<wtf>>, response: Response<List<wtf>>) {
         if (response.isSuccessful) {
             val oceaniaCountryList = response.body()
+
             Log.i("the plane from lost?","$oceaniaCountryList")
-            tv_ctv.text = "" // use "oceaniaCountryList" to populate this TextView
+            tv_ctv.text = oceaniaCountryList.toString()
         } else {
             val response = "response not successful; ${response.errorBody().toString()}"
             Toast.makeText(this@MainActivity, response, Toast.LENGTH_SHORT).show()

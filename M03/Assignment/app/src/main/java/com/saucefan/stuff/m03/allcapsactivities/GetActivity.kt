@@ -39,11 +39,37 @@ class GetActivity : AppCompatActivity() {
     }
 
     private fun getEmployeesById(employeeId: String) {
+        employeeService.getEmployees("2").enqueue(object: Callback<List<Employee>> {
+            override fun onFailure(call: Call<List<Employee>>, t: Throwable) {
+                t.printStackTrace()
+                val response = "faliure; ${t.message}"
+                Toast.makeText(this@GetActivity, response, Toast.LENGTH_SHORT).show()
+            }
 
+            override fun onResponse(
+                call: Call<List<Employee>>,
+                response: Response<List<Employee>>
+            ) {
+                Toast.makeText(this@GetActivity, response.body().toString(),Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun getEmployeesByAge(age: String) {
-        // TODO: Write the call to get an employee by age
+        employeeService.getEmployeeByAge("45").enqueue(object: Callback<List<Employee>> {
+            override fun onFailure(call: Call<List<Employee>>, t: Throwable) {
+                t.printStackTrace()
+                val response = "faliure; ${t.message}"
+                Toast.makeText(this@GetActivity, response, Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onResponse(
+                call: Call<List<Employee>>,
+                response: Response<List<Employee>>
+            ) {
+                Toast.makeText(this@GetActivity, response.body().toString(),Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun getEmployees() {

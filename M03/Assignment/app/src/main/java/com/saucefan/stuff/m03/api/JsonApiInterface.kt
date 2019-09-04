@@ -23,8 +23,8 @@ interface JsonApiInterface {
     @POST("employees")
     fun addNewEmployee(@Body employee: Employee): Call<Employee>
 
-    @POST("employees")
-    fun updateNewEmployee(@Body employee: Employee): Call<Employee>
+    @PUT("employees")
+    fun updateEmployee(@Body employee: Employee): Call<Employee>
 
     @DELETE("employee/{id}")
     fun deleteEmployee(@Path("id") id: String): Call<Void>

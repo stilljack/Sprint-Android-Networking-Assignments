@@ -31,7 +31,7 @@ interface JsonApiInterface {
 
     class Factory {
         companion object {
-            val BASE_URL = "https://demo8143297.mockable.io/"
+            val BASE_URL = "https://demo8143297.mockable.io"
             val gson = Gson()
 
 
@@ -48,10 +48,10 @@ interface JsonApiInterface {
                 val retrofit = Retrofit.Builder()
                     .client(okHttpClient)
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create()) //gson
+                    .addConverterFactory(GsonConverterFactory.create(gson)) //gson
                     .build()
-                    .create(JsonApiInterface::class.java)
-                return retrofit
+
+                return retrofit.create(JsonApiInterface::class.java)
             }
         }
     }

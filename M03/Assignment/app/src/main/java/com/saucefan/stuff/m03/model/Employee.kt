@@ -1,3 +1,3 @@
 package com.saucefan.stuff.m03.model
 
-data class Employee (val name:String,val age:Int, val id:Int,  val title:String)
+data class Employee (val name:String, val id:Int, val age:Int,  val title:String)

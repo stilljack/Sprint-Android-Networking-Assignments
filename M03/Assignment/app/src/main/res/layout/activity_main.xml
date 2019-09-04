@@ -9,13 +9,17 @@
     tools:context=".MainActivity">
 
 
+
+
     <!-- I knew I saw this view before -->
     <ImageView
         android:layout_width="wrap_content"
-        android:id="@+id/lambdaLogo"
+        android:id="@+id/notlambdalogo"
         android:layout_height="200dp"
         android:layout_marginTop="3dp"
         android:src="@drawable/ic_font_awesome_5_solid_smile_wink"
+        android:outlineAmbientShadowColor="@color/mtrl_on_surface_emphasis_high_type"
+        android:elevation="5dp"
         />
 
     <Button

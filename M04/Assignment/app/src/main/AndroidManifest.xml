@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <service
-            android:name=".BigBodyBessyDownloader"
+            android:name="com.saucefan.stuff.m04.LargeImage"
             android:enabled="true"
             android:exported="false"></service>
         <activity
@@ -24,6 +24,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
     </application>
 

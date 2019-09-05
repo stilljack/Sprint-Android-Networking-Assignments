@@ -1,9 +1,17 @@
 package com.saucefan.stuff.m04
 
+import android.app.DownloadManager
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import com.saucefan.stuff.m04.LargeImage.Companion.DOWNLOADED_ACTION
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 
 /**
@@ -45,6 +53,7 @@ class FullscreenActivity : AppCompatActivity() {
         false
     }
 
+    lateinit  var imageDownloadReciever: BroadcastReceiver
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -53,13 +62,48 @@ class FullscreenActivity : AppCompatActivity() {
 
         mVisible = true
 
+
+        fullscreen_content_controls.setOnClickListener { toggle() }
+
+
+
+        btn_one.setOnClickListener {
+
+            val serviceIntent = Intent(this, LargeImage::class.java)
+            //  serviceIntent.putExtra(LargeImageDownloadService.BITMAP_WIDTH, fullscreen_content.width)
+            //  serviceIntent.putExtra(LargeImageDownloadService.BITMAP_HEIGHT, fullscreen_content.height))
+            startActivity(serviceIntent)
+        }
+
+
+         imageDownloadReciever = object : BroadcastReceiver() {
+            override fun onReceive(context: Context?, intent: Intent?) {
+                if (intent?.action == DOWNLOADED_ACTION) {
+                    val bitmap: Bitmap =
+                        intent?.getParcelableExtra<Bitmap>(LargeImage.DOWNLOAD_IMAGE) as Bitmap
+
+                    fullscreen_content.setImageBitmap(bitmap)
+                }
+            }
+
+        }
+        val intentFilter = IntentFilter().apply {
+            addAction(DOWNLOADED_ACTION)
+        }
+
+        LocalBroadcastManager.getInstance(this).registerReceiver(imageDownloadReciever, intentFilter)
         // Set up the user interaction to manually show or hide the system UI.
-        fullscreen_content.setOnClickListener { toggle() }
+        fullscreen_content_controls?.setOnClickListener { toggle() }
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        dummy_button.setOnTouchListener(mDelayHideTouchListener)
+        fullscreen_content_controls.setOnTouchListener(mDelayHideTouchListener)
+    }
+
+    override fun onDestroy() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(imageDownloadReciever)
+        super.onDestroy()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -82,7 +126,7 @@ class FullscreenActivity : AppCompatActivity() {
     private fun hide() {
         // Hide UI first
         supportActionBar?.hide()
-        fullscreen_content_controls.visibility = View.GONE
+        fullscreen_content.visibility = View.GONE
         mVisible = false
 
         // Schedule a runnable to remove the status and navigation bar after a delay
@@ -109,6 +153,12 @@ class FullscreenActivity : AppCompatActivity() {
     private fun delayedHide(delayMillis: Int) {
         mHideHandler.removeCallbacks(mHideRunnable)
         mHideHandler.postDelayed(mHideRunnable, delayMillis.toLong())
+    }
+
+    fun showDownload(view: View) {
+        val i = Intent()
+        i.action = DownloadManager.ACTION_VIEW_DOWNLOADS
+        startActivity(i)
     }
 
     companion object {

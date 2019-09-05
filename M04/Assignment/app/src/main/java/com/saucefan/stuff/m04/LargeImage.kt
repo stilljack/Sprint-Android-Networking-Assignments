@@ -4,7 +4,7 @@ import android.app.IntentService
 import android.content.Intent
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 
-class BigBodyBessyDownloader: IntentService(INTENT_SERVICE_DOWNLOAD_IMG) {
+class LargeImage: IntentService(INTENT_SERVICE_DOWNLOAD_IMG) {
 
     override fun onHandleIntent(intent: Intent?) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

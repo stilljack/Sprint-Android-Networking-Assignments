@@ -10,11 +10,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import kotlinx.android.synthetic.main.cards.view.*
 import org.w3c.dom.Text
 
 
-class Adapter(val list: MutableList<wtf>) : RecyclerView.Adapter<Adapter.ViewHolder>() {/*
+class Adapter(val mutlist: MutableList<wtf>) : RecyclerView.Adapter<Adapter.ViewHolder>() {/*
     internal var callback: OnRecyclerInterfaceListener? = null
   *//*  fun setOnRecyclerInterfaceListener(callback: OnRecyclerInterfaceListener) {
         this.callback = callback
@@ -27,37 +28,17 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 }
 
     override fun getItemCount(): Int {
-        return list.size
+        return mutlist.size
     }
 /*   interface OnRecyclerInterfaceListener {
        fun onItemSelected(item:Items)
     }*/
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.nameTv.tv1 = list[position].name
 
+        val currentSelection = mutlist[position]
+            holder.tv1.text = currentSelection.name
 
-        //this ain't working cause we're only setting it on the last view created
-        holder.ratingView.setidref(position)
-        //holder.imageIv.setImageDrawable(holder.imageIv.getContext().getDrawable(shoppingList[position].resourceId))
-
-        val currentSelection = list[position]
-
-        holder.nameTv.setOnClickListener {view ->
-            /* callback?.onItemSelected(currentSelection)*/
-
-
-            val manager = (view.context as AppCompatActivity).supportFragmentManager
-            val bundle = Bundle()
-            bundle.putInt(ITEM_KEY, position)
-            bundle.putString(ITEMTRANSFER,currentSelection.name)
-            val fragment = RatingFragment.newInstance(position,currentSelection)
-            fragment.setArguments(bundle)
-            manager.beginTransaction()
-                .add(fragment, "first")
-                .addToBackStack("thisbacko")
-                .commit()
-        }
     }
 
 
@@ -77,4 +58,24 @@ override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
     }
 
 
+}
+class TextHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
+    //2
+    private var view: View = v
+    private var text: Text? = null
+
+    //3
+    init {
+        v.setOnClickListener(this)
+    }
+
+    //4
+    override fun onClick(v: View) {
+        Log.d("RecyclerView", "CLICK!")
+    }
+
+    companion object {
+        //5
+        private val TEXT_KEY = "TEXT"
+    }
 }

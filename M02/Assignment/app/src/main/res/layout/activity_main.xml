@@ -12,9 +12,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/btn_fetch"
         android:text="fetch Countries Button"
-        app:layout_constrainttoptoTopOf="@+id/cl"
-        app:layout_constraintLeft_toLeftOf="cl"
+        app:layout_constraintTop_toTopOf="@+id/cl"
+        app:layout_constraintLeft_toLeftOf="@+id/cl"
         />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_frag"
+        android:text="open frag"
+        app:layout_constraintTop_toBottomOf="@+id/btn_fetch"
+        app:layout_constraintLeft_toLeftOf="@id/cl"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="@+id/cl"
-        app:layout_constraintTop_toBottomOf="@+id/btn_fetch"
+        app:layout_constraintTop_toBottomOf="@+id/btn_frag"
         android:elevation="20dp"
         />
 

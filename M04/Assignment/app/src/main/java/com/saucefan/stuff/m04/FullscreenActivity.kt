@@ -110,6 +110,17 @@ class FullscreenActivity : AppCompatActivity() {
         fullscreen_content_controls.setOnTouchListener(mDelayHideTouchListener)
     }*/
         }
+
+
+
+
+
+
+
+
+
+
+
     override fun onDestroy() {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(imageDownloadReciever)
         super.onDestroy()

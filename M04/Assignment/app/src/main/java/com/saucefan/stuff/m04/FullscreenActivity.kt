@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.saucefan.stuff.m04.LargeImage.Companion.DOWNLOADED_ACTION
 import kotlinx.android.synthetic.main.activity_fullscreen.*
@@ -19,6 +20,7 @@ import kotlinx.android.synthetic.main.activity_fullscreen.*
  * status bar and navigation/system bar) with user interaction.
  */
 class FullscreenActivity : AppCompatActivity() {
+/*
     private val mHideHandler = Handler()
     private val mHidePart2Runnable = Runnable {
         // Delayed removal of status and navigation bar
@@ -41,29 +43,36 @@ class FullscreenActivity : AppCompatActivity() {
     }
     private var mVisible: Boolean = false
     private val mHideRunnable = Runnable { hide() }
-    /**
+    */
+/**
      * Touch listener to use for in-layout UI controls to delay hiding the
      * system UI. This is to prevent the jarring behavior of controls going away
      * while interacting with activity UI.
-     */
+     *//*
+
     private val mDelayHideTouchListener = View.OnTouchListener { _, _ ->
         if (AUTO_HIDE) {
             delayedHide(AUTO_HIDE_DELAY_MILLIS)
         }
         false
     }
+*/
 
     lateinit  var imageDownloadReciever: BroadcastReceiver
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_fullscreen)
+     /*
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
-        mVisible = true
-
+       mVisible = true
 
         fullscreen_content_controls.setOnClickListener { toggle() }
+       */
+
+
 
 
 
@@ -92,15 +101,15 @@ class FullscreenActivity : AppCompatActivity() {
         }
 
         LocalBroadcastManager.getInstance(this).registerReceiver(imageDownloadReciever, intentFilter)
-        // Set up the user interaction to manually show or hide the system UI.
+/*        // Set up the user interaction to manually show or hide the system UI.
         fullscreen_content_controls?.setOnClickListener { toggle() }
 
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         fullscreen_content_controls.setOnTouchListener(mDelayHideTouchListener)
-    }
-
+    }*/
+        }
     override fun onDestroy() {
         LocalBroadcastManager.getInstance(this).unregisterReceiver(imageDownloadReciever)
         super.onDestroy()
@@ -112,10 +121,10 @@ class FullscreenActivity : AppCompatActivity() {
         // Trigger the initial hide() shortly after the activity has been
         // created, to briefly hint to the user that UI controls
         // are available.
-        delayedHide(100)
+       // delayedHide(100)
     }
 
-    private fun toggle() {
+   /* private fun toggle() {
         if (mVisible) {
             hide()
         } else {
@@ -154,7 +163,7 @@ class FullscreenActivity : AppCompatActivity() {
         mHideHandler.removeCallbacks(mHideRunnable)
         mHideHandler.postDelayed(mHideRunnable, delayMillis.toLong())
     }
-
+*/
     fun showDownload(view: View) {
         val i = Intent()
         i.action = DownloadManager.ACTION_VIEW_DOWNLOADS

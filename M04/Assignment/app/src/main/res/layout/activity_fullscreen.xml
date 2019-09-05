@@ -12,24 +12,8 @@
     <!-- This FrameLayout insets its children based on system windows using
          android:fitsSystemWindows. -->
 
-    <ImageView
-        android:id="@+id/fullscreen_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:keepScreenOn="true"
-        android:src="@drawable/ic_launcher_background"
-        android:text="@string/dummy_content"
-        android:textColor="#33b5e5"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:elevation="30dp"
-        />
-
     <LinearLayout
-        android:layout_weight=".33"
             android:id="@+id/fullscreen_content_controls"
-            style="?metaButtonBarStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
@@ -39,29 +23,36 @@
 
             <Button
                 android:id="@+id/btn_one"
-                style="?metaButtonBarButtonStyle"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="download with intent service" />
+                android:text="intent service" />
 
             <Button
                 android:id="@+id/btn_two"
-                style="?metaButtonBarButtonStyle"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="download with dl manager"
+                android:text=" dl manager"
                 />
 
             <Button
                 android:id="@+id/btn_three"
-                style="?metaButtonBarButtonStyle"
+
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:onClick="showDownload"
-                android:text="Show Downloads"/>
 
+                android:text="ShowDownloads"/>
         </LinearLayout>
-    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/fullscreen_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top|center"
+
+        android:src="@mipmap/ic_launcher" />
+</FrameLayout>

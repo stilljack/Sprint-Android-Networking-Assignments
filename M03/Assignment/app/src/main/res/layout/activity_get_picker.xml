@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+
+    <!-- I knew I saw this view before -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/stillnotthelambdalogo"
+        android:layout_height="200dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/ic_font_awesome_5_solid_smile_wink"
+        android:outlineAmbientShadowColor="@color/mtrl_on_primary_emphasis_high_type"
+        android:elevation="15dp"
+        />
+
+    <Button
+        android:id="@+id/GetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="regular old getty"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/GetWithPathButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="path"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/GetWithQueryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="querry"
+        android:textSize="18sp"
+        />
+
+
+
+</LinearLayout>

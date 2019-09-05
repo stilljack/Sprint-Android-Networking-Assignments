@@ -14,6 +14,14 @@ import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.saucefan.stuff.m04.LargeImage.Companion.DOWNLOADED_ACTION
 import kotlinx.android.synthetic.main.activity_fullscreen.*
+import com.bumptech.glide.annotation.GlideModule
+import com.bumptech.glide.module.AppGlideModule
+import androidx.core.app.ComponentActivity
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.bumptech.glide.Glide
+
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -109,11 +117,17 @@ class FullscreenActivity : AppCompatActivity() {
         // while interacting with the UI.
         fullscreen_content_controls.setOnTouchListener(mDelayHideTouchListener)
     }*/
+
+
+
+        btn_two.setOnClickListener {
+
+            Glide.with(this)
+                .load("https://66.media.tumblr.com/b6f655135ddaec2bfeeed3bade109d9e/tumblr_osn0z4KRTU1w6k7kvo1_500.gif")
+                .into(fullscreen_content);
         }
 
-
-
-
+        }
 
 
 

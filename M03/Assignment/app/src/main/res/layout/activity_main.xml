@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+
+
+
+    <!-- I knew I saw this view before -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:id="@+id/notlambdalogo"
+        android:layout_height="200dp"
+        android:layout_marginTop="3dp"
+        android:src="@drawable/ic_font_awesome_5_solid_smile_wink"
+        android:outlineAmbientShadowColor="@color/mtrl_on_surface_emphasis_high_type"
+        android:elevation="5dp"
+        />
+
+    <Button
+        android:id="@+id/GetButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="get"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/PostButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="post"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/PutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="put"
+        android:textSize="18sp"
+        />
+
+    <Button
+        android:id="@+id/DeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="delete"
+        android:textSize="18sp"
+        />
+
+</LinearLayout>

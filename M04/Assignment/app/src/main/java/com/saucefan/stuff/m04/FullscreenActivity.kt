@@ -70,9 +70,9 @@ class FullscreenActivity : AppCompatActivity() {
         btn_one.setOnClickListener {
 
             val serviceIntent = Intent(this, LargeImage::class.java)
-            //  serviceIntent.putExtra(LargeImageDownloadService.BITMAP_WIDTH, fullscreen_content.width)
-            //  serviceIntent.putExtra(LargeImageDownloadService.BITMAP_HEIGHT, fullscreen_content.height))
-            startActivity(serviceIntent)
+           //   serviceIntent.putExtra(LargeImage.BITMAP_WIDTH, fullscreen_content.width)
+         //     serviceIntent.putExtra(LargeImage.BITMAP_HEIGHT, fullscreen_content.height))
+            this.startService(serviceIntent)
         }
 
 

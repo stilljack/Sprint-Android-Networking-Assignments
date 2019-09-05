@@ -7,13 +7,10 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 class LargeImage: IntentService(INTENT_SERVICE_DOWNLOAD_IMG) {
 
     override fun onHandleIntent(intent: Intent?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
         Thread(Runnable() {
-            val bitmap = NetworkAdapter.getBitmapFromUrl(IMG_ONE,0,0)
+
+            val bitmap = NetworkAdapter.getBitmapFromUrl(IMG_ONE,220,220)
 
             val intent = Intent(DOWNLOADED_ACTION).apply {
                 putExtra(DOWNLOAD_IMAGE,bitmap)
@@ -22,6 +19,11 @@ class LargeImage: IntentService(INTENT_SERVICE_DOWNLOAD_IMG) {
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent)
             // stopSelf() unecessary since we're using IntentService
         }).start()
+
+    }
+
+    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+
 
         return super.onStartCommand(intent, flags, startId)
     }

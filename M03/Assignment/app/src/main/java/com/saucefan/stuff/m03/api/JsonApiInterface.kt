@@ -26,7 +26,7 @@ interface JsonApiInterface {
     @PUT("employees")
     fun updateEmployee(@Body employee: Employee): Call<Employee>
 
-    @DELETE("employee/{id}")
+    @DELETE("employees/{id}")
     fun deleteEmployee(@Path("id") id: String): Call<Void>
 
     class Factory {
